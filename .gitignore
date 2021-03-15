@@ -1,0 +1,3 @@
+# Ignore latex-based auto-generated folders
+_minted-*
+papers/auto

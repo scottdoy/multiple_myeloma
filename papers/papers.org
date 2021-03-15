@@ -4,7 +4,7 @@
 #+FILETAGS: mm-papers
 #+PROPERTY: header-args :exports none :tangle "./mm-export.bib"
 #+OPTIONS: toc:nil <:nil c:nil tags:nil todo:nil H:5
-#+EXCLUDE_TAGS: 
+#+EXCLUDE_TAGS: noexport
 #+SELECT_TAGS: radx
 #+EXPORT_FILE_NAME: papers.pdf
 #+LATEX_CLASS_OPTIONS: [12pt]

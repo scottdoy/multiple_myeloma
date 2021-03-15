@@ -1,0 +1,684 @@
+#+TITLE: Multiple Myeloma Notes
+#+AUTHOR: Scott Doyle
+#+DATE: \today
+#+FILETAGS: mm-papers
+#+PROPERTY: header-args :exports none :tangle "./mm-export.bib"
+#+OPTIONS: toc:nil <:nil c:nil tags:nil todo:nil H:5
+#+EXCLUDE_TAGS: 
+#+SELECT_TAGS: radx
+#+EXPORT_FILE_NAME: papers.pdf
+#+LATEX_CLASS_OPTIONS: [12pt]
+#+LATEX_HEADER: \input{papers.sty}
+
+* Lisp Stuff                                                       :noexport:
+
+#+NAME: startup
+#+BEGIN_SRC emacs-lisp
+(setq org-ref-bibliography-notes "./papers.org"
+      org-ref-default-bibliography '("./papers.bib")
+      org-ref-pdf-directory "./pdfs/")
+
+(setq bibtex-completion-bibliography "./papers.bib"
+      bibtex-completion-library-path "./pdfs/"
+      bibtex-completion-notes-path "./papers.org")
+
+#+END_SRC
+
+#+RESULTS: startup
+: ./papers.org
+
+# Local Variables:
+# org-confirm-babel-evaluate: nil
+# eval: (progn (org-babel-goto-named-src-block "startup") (org-babel-execute-src-block) (outline-hide-sublevels 1))
+# End:
+
+* Overview
+** BACKGROUND AND INTRODUCTION
+
+*** Multiple myeloma: history, statistics, symptoms, causes, diagnosis and treatment
+Multiple myeloma (MM) is cancer of plasma cells in the blood. 
+
+*** Computational methods for disease detection, progression, and intervention
+*** Computational methods in MM
+**** Computational methods to predict MM risk
+**** Computational methods to predict MM onset
+**** Computational methods to predict MM progression (from MGUS?)
+- Altrock ref below
+- http://www.mdpi.com/2079-3197/5/1/16/pdf
+
+**** Predicting clinical/treatment response of MM using computational methods
+- https://www.nfcr.org/blog/genomic-computational-mapping-and-nutritional-supplementation-in-multiple-myeloma/
+- http://www.bloodjournal.org/content/126/23/501?sso-checked=true
+
+*** Rationale and objectives of this review
+- could be first section
+- focus on methods that integrate multiple data sources
+- data analytics methods (rather than ab initio methods, i.e.,  - pathway modelling, etc.)
+
+** PROBLEMS AND ISSUES FOR COMPUTATIONAL METHODS
+
+**** Risk of MM onset and progression
+
+*** Time of MM diagnosis and progression
+**** Pharmacology and systems pharmacology of MM treatments
+**** Relationship between drug intake and disease outcome
+**** Sensitive and resistant MM
+**** Modelling interactions to other systems/confounding factors in treatment
+**** What makes MM suited to a new range of computational methods
+
+** DATA, METHODS, TECHNIQUES, AND LIMITATIONS
+*** Boolnean networks
+*** Bayesian networks
+*** Biophysics and biochemical methods
+- http://www.biocoresbcn.eu/content/computational-technology-fight-multiple-myeloma
+- Computational drug repurposing
+  - docking and CANDO
+  - Exploiting synthetic lethality
+
+*** Genomic and proteomic analyses
+- Drusbosky et al. ref below
+
+*** Integrating multiple data sources
+- http://www.mdpi.com/2079-3197/5/1/16/pdf
+
+*** Data type and sample size issues
+- types and number of patients methods can handle
+- benchmarking: training and testing
+- validation
+
+* Papers
+** NEXT cite:zamagni_18f-fdg_2016: 18F-FDG PET/CT Focal, but Not Osteolytic, Lesions Predict the Progression of Smoldering Myeloma to Active Diseas
+ :PROPERTIES:
+  :Custom_ID: zamagni_18f-fdg_2016
+  :AUTHOR: Zamagni {\it et al.}
+  :JOURNAL: Leukemia
+  :YEAR: 
+  :VOLUME: 30
+  :PAGES: 417--422
+  :DOI: 10.1038/leu.2015.291
+  :URL: http://www.nature.com/articles/leu2015291
+ :END:
+
+*** Page 2
+
+#+BEGIN_QUOTE
+Smoldering multiple myeloma (SMM) is an asymptomatic clonal plasma cell disorder
+defined by the presence of a serumplasma cell disorder defined by the p
+monoclonal component (MC) of ⩾ 3 g/dl and/or of 410% clonal bone marrow plasma
+cells (BMPC), with no evidence of endbone marrow plasma cells (BMPC), with no
+evidence of end-organ damage (CRAB features, including hypercalcemia, renal
+failure, anemia or lytic bone lesions, and/or additional myeloma-defining events
+(MDE), including biomarkers of malignancy).1 The progression rate into active
+multiple myeloma (MM) is 10% per year for the first 5 years, the cumulative
+probability of progression is 73% at 15 years.1
+Therefore, identification of predictors of progression into MM is of great
+importance.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Several markers (serum MC, percentage of BMPC, serum free light chain (sFLC),
+ratio, immunophenotyping of aberrant plasma cells, tumor genetic abnormalities
+and focal lesions (FLs) at magnetic resonance imaging (MRI)) have already been
+established to identify sub-groups of SMM patients with the highest risk of
+progression into MM.2
+
+Among imaging methods, positron emission tomography (PET) integrated with
+computed tomography (PET/CT) using glucose labelled with the positron-emitting
+radionuclide 18F (fluorodeoxyglucose (18F-FDG)) is a reliable technique for
+asses sing early skeletal involvement and for predicting outcomes at the onset
+of MM.3–7
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+a total of 120 patients (76 males and 44 females) with
+SMM entered this prospective observational study
+#+END_QUOTE
+
+*** Page 3
+
+#+BEGIN_QUOTE
+
+PET/CT scans were excluded from the study if: (a) they were poor-quality images
+with low statistics that were not considered suitable for diagnostic interpreta
+tion, (b) the image data set was incomplete, and (c) large discrepancies
+concerning uptake time and administered dose were found analyzing DICOM headers
+of PET scans.
+
+PET/CT was considered positive for SMM patients in the presence of one of the
+following:
+
+1. focal areas of visually detectable increased tracer uptake within bones
+   (for example, more intense than background BM uptake) excluding articular
+   processes, without any underlying lesion identified by CT and present on at
+   least two consecutive slices (to avoid a misinterpretation as BM mild
+   non-homogeneous FDG uptake). The number, size and location of hypermetabolic
+   focal lesions (PET-FLs) were recorded. The degree of FDG uptake was
+   represented by standardized uptake value (SUV) maximum (max) in the hottest
+   lesion;
+2. diffusely increased tracer uptake with a SUVmax equal to, or greater
+   than, the uptake in the liver. In this case, SUVmax was measured in the
+   hottest area within the BM. 
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+All patients were studied at baseline with 18F-FDG PET/CT, performed
+locally in each hematological institution; images were thereafter uploaded
+in a system for central review. Axial magnetic resonance (MRI) (spine and
+pelvis) or whole-body MRI (WB-MRI) were likewise executed at study entry
+in 91/120 patients and were interpreted locally in each institution.
+#+END_QUOTE
+
+*** Page 4
+
+#+BEGIN_QUOTE
+PET/CT was completely negative in 101/120 (84%) of the patients at diagnosis and
+positive in 19/120 (16%) of them.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+In 91/120 patients, a baseline axial (79) or WB-MRI (12) was performed and was
+completely negative in 73% of them and positive in 27%,
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Agreement between PET/CT and MRI scans in the 91 patients for whom both the
+imaging techniques were available was 77% (kappa = 0.32, which means only fair
+agreement); more particularly both PET/CT and MRI were negative in 67% of the
+patients and positive in 10% of them.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+With a median follow-up of 2.2 years from the time of study entrance to December
+2014 (IQR 1–5 years), 74 (62%) of the patients remained in the smoldering phase,
+while 46 (38%) progressed to active MM, in a median time of 4 years. Progression
+to active MM was documented by skeletal MDE, with/without the presence of other
+CRAB features, in 21% of the patients and by any one or more of the CRAB
+features, without skeletal MDE, in 17% of cases.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+The univariate analysis revealed that the presence of a positive PET/CT (that
+is, at least 1 FL and/or diffuse involvement), the size of MC (as a continuous
+variable), BMPC460% and a diffuse BMinfiltration at MRI were adverse prognostic
+factors for progression to active disease
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+The median TTP and TTP with skeletal MDE for patients with positive PET/CT were
+1.1 and 2.2 years, respectively, in comparison with corresponding values of 4.5
+and 6.9 years for PET/CT-negative patients.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+In a Cox regression analysis of baseline prognostic factors, the
+presence of PET/CT positivity along with BMPC460% wereindependent predictors of shorter TTP to active MM.
+#+END_QUOTE
+
+*** Page 5
+
+#+BEGIN_QUOTE
+In light of the advances in laboratory and imaging techniques, providing higher
+sensitivity and ability to detect early damage, and of the data showing improved
+outcomes with early intervention in high-risk SMM,25 diagnostic criteria were
+recently updated by the IMWG.8 In particular, two major changes were
+established, the first one, based on robust studies, defining those patients
+carrying at least one out of three biomarkers of progression (that is, clonal
+BMPC460%, sFLC ratioprog ⩾ 100 and 41 FL at MRI), with approximately 80% risk of
+developing end-organ damage within 2 years from ddeveloping end-organ damage
+within 2 years from diagnosis, such as active MM, requiring immediate treatment.
+The second major improvement was the definition of bone lesions, within MDE, not
+only on the appearance of sites of bone destruction on skeletal radiography but
+also on the presence of osteolytic lesions on CT or PET/CT, thanks to the
+well-recognized higher sensitivity of newer imaging techniques over WBXR, more
+lesions being detected and at an earlier phase.7
+
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+18F-FDG PET/CT is a nuclear imaging procedure that combines functional imaging
+(the PET part) and morphological assessment by CT, allowing high-sensitivity and
+specificity detection of hypermetabolic lesions, intramedullary and
+extramedullary, BM involvement and osteolytic lesions as well as exact
+anatomical localization thereof. Bone lesions are identified with a resolution
+limit of 0.5 cm.
+
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+This study demonstrates, for the first time to the best of our knowledge, the
+prognostic significance of FLs in the absence of underlying osteolytic lesions,
+as detected by 18F-FDG PET/CT, in patients with SMM for progression into active
+disease.
+
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Early detection of occult lesions may provide important benefits for patients by
+preventing skeletal complications and pain, as well as promoting quality of
+life.27 In addition to the identification of early skeletal destruction, in this
+prospective study of 120 SMM patients we found that PET/CT can show the presence
+of sites of focal hypermetabolic lesions (FLs) or diffuse BM hypermetabolism, in
+the absence of osteolytic lesions, in approximately 16% of cases. Moreover, we
+first provide demonstration that this imaging technique is a reliable predictor
+of prognosis not only in active MM3,4 but also in SMM.
+
+#+END_QUOTE
+
+*** Page 6
+
+#+BEGIN_QUOTE
+In particular, the probability of progression within 2 and 3 years for patients
+with positive PET/ CT was 58% and 66%, respectively, as compared with 33% and
+42% for negative patients. The risk of progression into active MM increased with
+the increasing number of FLs and with the increasing SUVmax value. However, the
+low number of patients, when grouped for FLs, diffuse pattern or SUVmax value,
+prevented us from finding an optimal cutoff to discriminate higher risk of
+progression into active disease in the 80% range at 2 years.
+
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+One concern with the serial use of PET/CT in clinical trials could be the
+heterogeneity of the visual criteria and the lack of inter observer
+reproducibility in interpreting results. Several attempts to standardize
+criteria for PET/CT imaging definitions and use of semi-quantitative SUV
+evaluations are now on-going to consoli date the use of this technique as a
+prognostic tool.32
+
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Agreement between PET/CT and MRI in the 91 patients for whom both imaging
+techniques were available was only fair; in particular, as already previously
+demonstrated in symptomatic MM,30 MRI seemed to be more sensitive in the axial
+skeleton, detecting abnormalities in 18% more patients, while PET/CT was more
+sensitive in 5% of cases, out of the MRI field of view.
+
+#+END_QUOTE
+
+** TODO Diagnosis, Risk Stratification and Management of Monoclonal Gammopathy of Undetermined Significance and Smoldering Multiple Myeloma
+ :PROPERTIES:
+  :Custom_ID: van_de_donk_diagnosis_2016
+  :AUTHOR: van de Donk, Mutis, Poddighe, Lokhorst \& Zweegman
+  :JOURNAL: International Journal of Laboratory Hematology
+  :YEAR: 
+  :VOLUME: 38
+  :PAGES: 110--122
+  :DOI: 10.1111/ijlh.12504
+  :URL: http://onlinelibrary.wiley.com/doi/10.1111/ijlh.12504/abstract
+ :END:
+
+cite:van_de_donk_diagnosis_2016
+
+** TODO Drug Discovery and Therapeutic Delivery for the Treatment of B and T Cell Tumors
+ :PROPERTIES:
+  :Custom_ID: stephenson_drug_2017
+  :AUTHOR: Stephenson \& Singh
+  :JOURNAL: Advanced Drug Delivery Reviews
+  :YEAR: 
+  :VOLUME: 114
+  :PAGES: 285--300
+  :DOI: 10.1016/j.addr.2017.06.010
+  :URL: http://www.sciencedirect.com/science/article/pii/S0169409X17300947
+ :END:
+
+cite:stephenson_drug_2017
+
+** TODO Automatic Recognition of Myeloma Cells in Microscopic Images Using Bottleneck Algorithm, Modified Watershed and SVM Classifier
+ :PROPERTIES:
+  :Custom_ID: saeedizadeh_automatic_2016
+  :AUTHOR: Saeedizadeh, Mehri Dehnavi, Talebi, Rabbani, Sarrafzadeh \& Vard
+  :JOURNAL: Journal of Microscopy
+  :YEAR: 
+  :VOLUME: 261
+  :PAGES: 46--56
+  :DOI: 10.1111/jmi.12314
+  :URL: http://onlinelibrary.wiley.com/doi/10.1111/jmi.12314/abstract
+ :END:
+
+cite:saeedizadeh_automatic_2016
+
+** TODO International Myeloma Working Group Updated Criteria for the Diagnosis of Multiple Myeloma
+ :PROPERTIES:
+  :Custom_ID: rajkumar_international_2014
+  :AUTHOR: Rajkumar {\it et al.}
+  :JOURNAL: The Lancet Oncology
+  :YEAR: 
+  :VOLUME: 15
+  :PAGES: e538-e548
+  :DOI: 10.1016/S1470-2045(14)70442-5
+  :URL: http://www.sciencedirect.com/science/article/pii/S1470204514704425
+ :END:
+
+cite:rajkumar_international_2014
+
+** TODO Clinical and Prognostic Significance of Bone Marrow Abnormalities in the Appendicular Skeleton Detected by Low-Dose Whole-Body Multidetector Computed Tomography in Patients with Multiple Myeloma
+ :PROPERTIES:
+  :Custom_ID: nishida_clinical_2015
+  :AUTHOR: Nishida, Matsue, Suehara, Fukumoto, Fujisawa, Takeuchi, Ouchi \& Matsue
+  :JOURNAL: Blood Cancer Journal
+  :YEAR: 
+  :VOLUME: 5
+  :PAGES: e329
+  :DOI: 10.1038/bcj.2015.57
+  :URL: https://www.nature.com/articles/bcj201557
+ :END:
+
+cite:nishida_clinical_2015
+
+** TODO Bone Microstructural Changes Revealed by High-Resolution Peripheral Quantitative Computed Tomography Imaging and Elevated DKK1 and MIP-1α Levels in Patients with MGUS
+ :PROPERTIES:
+  :Custom_ID: ng_bone_2011
+  :AUTHOR: Ng {\it et al.}
+  :JOURNAL: Blood
+  :YEAR: 
+  :VOLUME: 118
+  :PAGES: 6529--6534
+  :DOI: 10.1182/blood-2011-04-351437
+  :URL: http://www.bloodjournal.org/content/118/25/6529
+ :END:
+
+cite:ng_bone_2011
+
+** TODO Prospective Comparison of Conventional Radiography, Low-Dose Computed Tomography and Magnetic Resonance Imaging in Monoclonal Gammopathies
+ :PROPERTIES:
+  :Custom_ID: minarik_prospective_2016
+  :AUTHOR: Minarik, Krhovska, Hrbek, Pika, Bacovsky, Herman \& Scudla
+  :JOURNAL: Biomedical Papers
+  :YEAR: 
+  :VOLUME: 160
+  :PAGES: 305--309
+  :DOI: 10.5507/bp.2015.064
+  :URL: http://biomed.papers.upol.cz/doi/10.5507/bp.2015.064.html
+ :END:
+
+cite:minarik_prospective_2016
+
+** TODO Multiple Myeloma: 18F-FDG-PET/CT and Diagnostic Imaging
+ :PROPERTIES:
+  :Custom_ID: mihailovic_multiple_2015
+  :AUTHOR: Mihailovic \& Goldsmith
+  :JOURNAL: Seminars in Nuclear Medicine
+  :YEAR: 
+  :VOLUME: 45
+  :PAGES: 16--31
+  :DOI: 10.1053/j.semnuclmed.2014.08.002
+  :URL: http://www.seminarsinnuclearmedicine.com/article/S0001-2998(14)00070-1/abstract
+ :END:
+
+cite:mihailovic_multiple_2015
+
+** TODO Predictive Value of Longitudinal Whole-Body Magnetic Resonance Imaging in Patients with Smoldering Multiple Myeloma
+ :PROPERTIES:
+  :Custom_ID: merz_predictive_2014
+  :AUTHOR: Merz {\it et al.}
+  :JOURNAL: Leukemia
+  :YEAR: 
+  :VOLUME: 28
+  :PAGES: 1902--1908
+  :DOI: 10.1038/leu.2014.75
+  :URL: https://www.nature.com/articles/leu201475
+ :END:
+
+cite:merz_predictive_2014
+** TODO Determining the Significance of MGUS
+ :PROPERTIES:
+  :Custom_ID: merlini_determining_2014
+  :AUTHOR: Merlini
+  :JOURNAL: Blood
+  :YEAR: 
+  :VOLUME: 123
+  :PAGES: 305--307
+  :DOI: 10.1182/blood-2013-12-539940
+  :URL: http://www.bloodjournal.org/content/123/3/305
+ :END:
+
+cite:merlini_determining_2014
+** TODO Fully Automated Classification of Bone Marrow Infiltration in Low-Dose CT of Patients with Multiple Myeloma Based on Probabilistic Density Model and Supervised Learning
+ :PROPERTIES:
+  :Custom_ID: martinez-martinez_fully_2016
+  :AUTHOR: Martínez-Martínez, Kybic, Lambert \& Mecková
+  :JOURNAL: Computers in Biology and Medicine
+  :YEAR: 
+  :VOLUME: 71
+  :PAGES: 57--66
+  :DOI: 10.1016/j.compbiomed.2016.02.001
+  :URL: http://linkinghub.elsevier.com/retrieve/pii/S0010482516300208
+ :END:
+
+cite:martinez-martinez_fully_2016
+** TODO A Magnetic Resonance Imaging-Based Prognostic Scoring System to Predict Outcome in Transplant-Eligible Patients with Multiple Myeloma
+ :PROPERTIES:
+  :Custom_ID: mai_magnetic_2015
+  :AUTHOR: Mai {\it et al.}
+  :JOURNAL: Haematologica
+  :YEAR: 
+  :VOLUME: 100
+  :PAGES: 818--825
+  :DOI: 10.3324/haematol.2015.124115
+  :URL: http://www.haematologica.org/content/100/6/818
+ :END:
+
+cite:mai_magnetic_2015
+** TODO Identification of the Potential Risk Factors for Monoclonal Gammopathy of Undetermined Significance of Progression
+ :PROPERTIES:
+  :Custom_ID: li_identification_2015
+  :AUTHOR: Li, Du \& Hou
+  :JOURNAL: Hematology
+  :YEAR: 
+  :VOLUME: 20
+  :PAGES: 11--17
+  :DOI: 10.1179/1607845414Y.0000000163
+  :URL: https://doi.org/10.1179/1607845414Y.0000000163
+ :END:
+
+cite:li_identification_2015
+** TODO Automatic Bone Marrow Segmentation for PETCT Imaging in Multiple Myeloma
+ :PROPERTIES:
+  :Custom_ID: leydon_automatic_2016
+  :AUTHOR: Leydon, O’Connell, Greene \& Curran
+  :JOURNAL: Physica Medica: European Journal of Medical Physics
+  :YEAR: 
+  :VOLUME: 32
+  :PAGES: 242
+  :DOI: 10.1016/j.ejmp.2016.07.508
+  :URL: http://www.physicamedica.com/article/S1120-1797(16)30641-X/abstract
+ :END:
+
+cite:leydon_automatic_2016
+** TODO Monoclonal Gammopathy of Undetermined Significance (MGUS) and Smoldering (Asymptomatic) Multiple Myeloma: IMWG Consensus Perspectives Risk Factors for Progression and Guidelines for Monitoring and Management
+ :PROPERTIES:
+  :Custom_ID: kyle_monoclonal_2010
+  :AUTHOR: Kyle {\it et al.}
+  :JOURNAL: Leukemia
+  :YEAR: 
+  :VOLUME: 24
+  :PAGES: 1121--1127
+  :DOI: 10.1038/leu.2010.60
+  :URL: https://www.nature.com/articles/leu201060
+ :END:
+
+cite:kyle_monoclonal_2010
+** TODO Quantitative Diffusion-Weighted Imaging of the Bone Marrow: An Adjunct Tool for the Diagnosis of a Diffuse MR Imaging Pattern in Patients with Multiple Myeloma
+ :PROPERTIES:
+  :Custom_ID: koutoulidis_quantitative_2016
+  :AUTHOR: Koutoulidis {\it et al.}
+  :JOURNAL: Radiology
+  :YEAR: 
+  :VOLUME: 282
+  :PAGES: 484--493
+  :DOI: 10.1148/radiol.2016160363
+  :URL: http://pubs.rsna.org/doi/abs/10.1148/radiol.2016160363
+ :END:
+
+cite:koutoulidis_quantitative_2016
+** TODO Guidelines for the Use of Imaging in the Management of Myeloma
+ :PROPERTIES:
+  :Custom_ID: dsa_guidelines_2007
+  :AUTHOR: D'Sa, Abildgaard, Tighe, Shaw \& Hall-Craggs
+  :JOURNAL: British Journal of Haematology
+  :YEAR: 
+  :VOLUME: 137
+  :PAGES: 49--63
+  :DOI: 10.1111/j.1365-2141.2007.06491.x
+  :URL: http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2141.2007.06491.x/abstract
+ :END:
+
+cite:dsa_guidelines_2007
+** TODO Role of Magnetic Resonance Imaging in the Management of Patients With Multiple Myeloma: A Consensus Statement
+ :PROPERTIES:
+  :Custom_ID: dimopoulos_role_2015
+  :AUTHOR: Dimopoulos {\it et al.}
+  :JOURNAL: Journal of Clinical Oncology
+  :YEAR: 
+  :VOLUME: 33
+  :PAGES: 657--664
+  :DOI: 10.1200/JCO.2014.57.9961
+  :URL: http://ascopubs.org/doi/10.1200/JCO.2014.57.9961
+ :END:
+
+cite:dimopoulos_role_2015
+** TODO Clinical, Genomic, and Imaging Predictors of Myeloma Progression from Asymptomatic Monoclonal Gammopathies (SWOG S0120)
+ :PROPERTIES:
+  :Custom_ID: dhodapkar_clinical_2014
+  :AUTHOR: Dhodapkar {\it et al.}
+  :JOURNAL: Blood
+  :YEAR: 
+  :VOLUME: 123
+  :PAGES: 78--85
+  :DOI: 10.1182/blood-2013-07-515239
+  :URL: http://www.bloodjournal.org/content/123/1/78
+ :END:
+
+cite:dhodapkar_clinical_2014
+** TODO Prognostic Biomarkers in the Progression From MGUS to Multiple Myeloma: A Systematic Review
+ :PROPERTIES:
+  :Custom_ID: cosemans_prognostic_2018
+  :AUTHOR: Cosemans {\it et al.}
+  :JOURNAL: Clinical Lymphoma Myeloma and Leukemia
+  :YEAR: 
+  :VOLUME: 
+  :PAGES: 
+  :DOI: 10.1016/j.clml.2018.02.011
+  :URL: http://www.sciencedirect.com/science/article/pii/S2152265017314015
+ :END:
+
+cite:cosemans_prognostic_2018
+** TODO Guidelines for the Use of Imaging in the Management of Patients with Myeloma
+ :PROPERTIES:
+  :Custom_ID: chantry_guidelines_2017
+  :AUTHOR: Chantry, Kazmi, Barrington, Goh, Mulholland, Streetly, Lai, Pratt \& the British Society for Haematology Guidelines
+  :JOURNAL: British Journal of Haematology
+  :YEAR: 
+  :VOLUME: 178
+  :PAGES: 380--393
+  :DOI: 10.1111/bjh.14827
+  :URL: http://onlinelibrary.wiley.com/doi/10.1111/bjh.14827/abstract
+ :END:
+
+cite:chantry_guidelines_2017
+
+** TODO Use of Genomic Information to Predict Treatment Response in Multiple Myeloma Patients By Computational Mapping of Protein Network Disturbances
+ :PROPERTIES:
+  :Custom_ID: drusbosky_use_2016
+  :AUTHOR: Drusbosky {\it et al.}
+  :JOURNAL: Blood
+  :YEAR: 
+  :VOLUME: 128
+  :PAGES: 2099--2099
+  :DOI: 10.1182/blood.V128.22.2099.2099
+  :URL: https://doi.org/10.1182/blood.V128.22.2099.2099
+ :END:
+
+cite:drusbosky_use_2016
+** TODO Novel Computational Method for Predicting Polytherapy Switching Strategies to Overcome Tumor Heterogeneity and Evolution
+ :PROPERTIES:
+  :Custom_ID: jonsson_novel_2017
+  :AUTHOR: Jonsson {\it et al.}
+  :JOURNAL: Scientific Reports
+  :YEAR: 
+  :VOLUME: 7
+  :PAGES: 44206
+  :DOI: 10.1038/srep44206
+  :URL: https://www.nature.com/articles/srep44206
+ :END:
+
+cite:jonsson_novel_2017
+** TODO A Hybrid Computation Model to Describe the Progression of Multiple Myeloma and Its Intra-Clonal Heterogeneity
+ :PROPERTIES:
+  :Custom_ID: bouchnita_hybrid_2017
+  :AUTHOR: Bouchnita, Belmaati, Aboulaich, Koury \& Volpert
+  :JOURNAL: Computation
+  :YEAR: 
+  :VOLUME: 5
+  :PAGES: 16
+  :DOI: 10.3390/computation5010016
+  :URL: https://www.mdpi.com/2079-3197/5/1/16
+ :END:
+
+cite:bouchnita_hybrid_2017
+** TODO Estimating Mono- and Bi-Phasic Regression Parameters Using a Mixture Piecewise Linear Bayesian Hierarchical Model
+ :PROPERTIES:
+  :Custom_ID: zhao_estimating_2017
+  :AUTHOR: Zhao, Catalano, DeGruttola \& Michor
+  :JOURNAL: PLOS ONE
+  :YEAR: 
+  :VOLUME: 12
+  :PAGES: e0180756
+  :DOI: 10.1371/journal.pone.0180756
+  :URL: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0180756
+ :END:
+
+cite:zhao_estimating_2017
+** TODO Analysis of the Genomic Landscape of Multiple Myeloma Highlights Novel Prognostic Markers and Disease Subgroups
+ :PROPERTIES:
+  :Custom_ID: bolli_analysis_2018
+  :AUTHOR: Bolli {\it et al.}
+  :JOURNAL: Leukemia
+  :YEAR: 
+  :VOLUME: 32
+  :PAGES: 2604--2616
+  :DOI: 10.1038/s41375-018-0037-9
+  :URL: 
+ :END:
+
+cite:bolli_analysis_2018
+** TODO Boolean Network Modeling in Systems Pharmacology
+ :PROPERTIES:
+  :Custom_ID: bloomingdale_boolean_2018
+  :AUTHOR: Bloomingdale, Nguyen, Niu \& Mager
+  :JOURNAL: Journal of pharmacokinetics and pharmacodynamics
+  :YEAR: 
+  :VOLUME: 45
+  :PAGES: 159--180
+  :DOI: 10.1007/s10928-017-9567-4
+  :URL: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6531050/
+ :END:
+
+cite:bloomingdale_boolean_2018
+** TODO Where We Were, Where We Are, Where We Are Going: Progress in Multiple Myeloma
+ :PROPERTIES:
+  :Custom_ID: bergsagel_where_2014
+  :AUTHOR: Bergsagel
+  :JOURNAL: American Society of Clinical Oncology Educational Book. American Society of Clinical Oncology. Annual Meeting
+  :YEAR: 
+  :VOLUME: 
+  :PAGES: 199--203
+  :DOI: 10.14694/EdBook_AM.2014.34.199
+  :URL: 
+ :END:
+
+cite:bergsagel_where_2014
+** TODO Computational Model of Progression to Multiple Myeloma Identifies Optimum Screening Strategies
+ :PROPERTIES:
+  :Custom_ID: altrock_computational_2018
+  :AUTHOR: Altrock, Ferlic, Galla, Tomasson \& Michor
+  :JOURNAL: JCO Clinical Cancer Informatics
+  :YEAR: 
+  :VOLUME: 
+  :PAGES: 1--12
+  :DOI: 10.1200/CCI.17.00131
+  :URL: https://ascopubs.org/doi/full/10.1200/CCI.17.00131
+ :END:
+
+cite:altrock_computational_2018

@@ -1,0 +1,45 @@
+% Define reasonable page margins (don't need a million inches on all sides)
+\usepackage{geometry}
+\geometry{
+  left=20mm,
+  right=20mm,
+  top=20mm,
+  bottom=20mm,
+}
+% Decent fonts
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{parskip}
+
+% Put the title and author name left-aligned
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  \huge{\textbf{\@title}}
+
+  \@author
+\end{flushleft}\egroup
+}
+\makeatother
+
+% Remove the "References" header from the bibliostyle
+% We will use Org headers to do this
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+
+% Add a horizontal rule after each subsection and section
+\usepackage{titlesec}
+
+\titleformat{\section}
+            {\normalfont\Large\bfseries}
+            {\thesection}
+            {1em}
+            {}
+            [{\titlerule[0.8pt]}]%
+
+
+% Set up the bibliography
+\usepackage[citestyle=authoryear,backend=biber,natbib=true]{biblatex}%
+\DeclareFieldFormat{apacase}{#1}%
+\addbibresource{papers.bib}%
